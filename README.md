@@ -112,10 +112,28 @@ MoshePlzStopHackingMe!
 
 ```
 
+### debugfs
+
+debugfs es un sistema de archivos especial disponible en el núcleo Linux desde la versión 2.6.10-rc3.​ Si te encuentras en el grupo disk practicamente tienes acceso a cualquier directorio del sistema
+
+```
+debugfs /dev/sda1
+```
+
+![image](https://github.com/gecr07/Falafel-htb/assets/63270579/195c68e7-1258-4bc4-8d4d-f8d0c76ce5a6)
+
+Ya tenemos acceso a lo que sea del sistem
+
+![image](https://github.com/gecr07/Falafel-htb/assets/63270579/88ad209e-18b2-431a-a7aa-c29f1e1ad3e4)
+
+Podemos leer la flag...
 
 
+# Bibliografia
 
+Los grupos que son peligrosos tal como video o como disk todo lo puedes encontrar aqui
 
+> https://book.hacktricks.xyz/linux-hardening/privilege-escalation/interesting-groups-linux-pe
 
 
 
