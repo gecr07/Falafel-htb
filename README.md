@@ -53,7 +53,7 @@ signal.signal(signal.SIGINT, def_handler)
 # Variables globales
 
 login_url="http://10.129.229.139/login.php"
-characters=string.digits + e
+characters=string.digits + "e" # string.ascii_lowercase
 
 
 
